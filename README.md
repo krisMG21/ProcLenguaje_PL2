@@ -13,13 +13,14 @@ Fuentes de interés:
 
 * [ANTLR3 Cheat Sheet](https://theantlrguy.atlassian.net/wiki/spaces/ANTLR3/pages/2687036/ANTLR+Cheat+Sheet)
 * [Libro ANTLR4](https://github.com/Monarch510/antlr-v4/blob/master/The%20Definitive%20ANTLR%204%20Reference%2C%202nd%20Edition.pdf)
+* [Mega tutorial ANTLR](https://tomassetti.me/antlr-mega-tutorial)
 
 ## Descargas
 
 Para descargar el ANTLR para `Python` se puede usar el siguiente comando:
 
 ```bash
-pip install antlr4-python3-runtime
+$ pip install antlr4-python3-runtime
 ```
 
 ## Uso del ANTLR
@@ -47,11 +48,10 @@ Una vez definida la gramática, se puede generar un parser con el siguiente coma
 antlr4 -Dlanguage=Python3 Expr.g4
 ```
 
-Esto generará un archivo llamado `ExprLexer.py` y `ExprParser.py` (entre muchos otros),
-que usaríamos en nuestro código para generar árboles de sintáxis.
+Esto generará un archivo llamado `ExprLexer.py` y `ExprParser.py` (entre otros),
+que usaríamos en nuestro código para generar árboles de sintáxis y parsear expresiones.
 
-En el siguiente ejemplo, vamos a usar el archivo `Expr.g4` para generar un parser
-para una expresión aritmética.
+El siguiente es un ejemplo de uso en código de las herramientas que hemos generado:
 
 ```python
 from ExprParser import ExprParser
@@ -74,9 +74,13 @@ print(tree.toStringTree(recog=parser))
 Este código generará el siguiente árbol de sintáxis:
 
 ```bash
+$ python3 ExprMain.py
 > 2+2*4
 (prog (expr (expr 2) + (expr (expr 2) * (expr 4))) <EOF>)
 ```
 
-> [!NOTE]
-> Hay métodos para imprimirlo en forma de árbol árbol, si se desea.
+Otra manera es usar las herramientas de `ANTLR` desde la consola:
+
+```bash
+$ antlr4-parse Expr.g4 prog -gui
+```
