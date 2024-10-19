@@ -72,10 +72,10 @@ print(tree.toStringTree(recog=parser))
 
 Este código generará el siguiente árbol de sintáxis:
 
-> [!NOTE]
-> Hay métodos para imprimirlo en forma de árbol árbol, si se desea.
-
 ```bash
 > 2+2*4
 (prog (expr (expr 2) + (expr (expr 2) * (expr 4))) <EOF>)
 ```
+
+> [!NOTE]
+> Hay métodos para imprimirlo en forma de árbol árbol, si se desea.
