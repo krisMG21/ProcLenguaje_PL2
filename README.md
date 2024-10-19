@@ -38,7 +38,8 @@ expr : atom | ('+' | '-') expr | expr '**' expr | expr ('*' | '/') expr | expr
 atom : INT ;
 
 INT : [0-9]+ ;
-WS : [ \t\n\r]+ -> skip ;```
+WS : [ \t\n\r]+ -> skip ;
+```
 
 Una vez definida la gramática, se puede generar un parser con el siguiente comando:
 
