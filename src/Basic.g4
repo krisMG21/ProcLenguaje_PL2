@@ -1,30 +1,37 @@
 grammar Basic;
 
-program: (statement NEWLINE)* EOF;
+// PARSER
+program: (statement (NEWLINE+ | EOF)?)*;
 
 statement: 
-    letStmt | printStmt | inputStmt | ifStmt | forStmt | whileStmt | repeatStmt;
+    letStmt | opStmt | printStmt | inputStmt | ifStmt | forStmt | whileStmt | repeatStmt | keyStmt;
 
 letStmt:
-    'LET' ID '=' expression;
+    ('LET' | 'let') ID '=' expression;
+
+opStmt:
+    ID '=' expression;
 
 printStmt: 
-    'PRINT' (expression (',' expression)* )?;
+    ('PRINT' | 'print') expression;
 
 inputStmt: 
-    'INPUT' STRING_LITERAL ID;
+    ('INPUT' | 'input') STRING_LITERAL ID;
 
-ifStmt: 
-    'IF' condition 'THEN' NEWLINE (statement NEWLINE)* ('ELSE' NEWLINE (statement NEWLINE)*)? 'END';
+ifStmt:
+    ('IF' | 'if') condition ('THEN' | 'then') NEWLINE (statement NEWLINE)* (('ELSE' | 'else') NEWLINE (statement NEWLINE)*)? ('END' | 'end');
 
 forStmt: 
-    'FOR' ID '=' expression 'TO' expression NEWLINE (statement NEWLINE)* 'NEXT';
+    ('FOR' | 'for') ID '=' expression ('TO' | 'to') expression NEWLINE (statement NEWLINE)* 'NEXT';
 
 whileStmt: 
-    'WHILE' condition NEWLINE (statement NEWLINE)* 'END';
+    ('WHILE' | 'while') condition NEWLINE (statement NEWLINE)* 'END';
 
 repeatStmt: 
-    'REPEAT' NEWLINE (statement NEWLINE)* 'UNTIL' condition;
+    ('REPEAT' | 'repeat') NEWLINE (statement NEWLINE)* ('UNTIL' | 'until') condition;
+
+keyStmt:
+    ('CONTINUE' | 'continue') | ('EXIT' | 'exit') ;
 
 condition: 
     expression comparisonOp expression | expression;
@@ -38,8 +45,10 @@ expression:
 functionCall : 
     'VAL' '(' expression ')' | 'LEN' '(' expression ')' | 'ISNAN' '(' expression ')';
 
+// LEXER
 ID: [a-zA-Z_][a-zA-Z0-9_]*;
 NUMBER: [0-9]+ ('.' [0-9]+)?;
 STRING_LITERAL: '"' (~["\r\n])* '"';
 NEWLINE: '\r'? '\n';
+COMMENT: 'REM' ~[\r\n]* NEWLINE -> skip;
 WS: [ \t]+ -> skip;
