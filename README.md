@@ -82,6 +82,6 @@ $ python3 ExprMain.py
 Otra manera es usar las herramientas de `ANTLR` desde la consola:
 
 ```bash
-$ antlr4-parse Expr.g4 prog -gui
+$ antlr4-parse Expr.g4 <root> -gui
 <grafico en pestaña nueva>
 ```
