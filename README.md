@@ -83,4 +83,5 @@ Otra manera es usar las herramientas de `ANTLR` desde la consola:
 
 ```bash
 $ antlr4-parse Expr.g4 prog -gui
+<grafico en pestaña nueva>
 ```
