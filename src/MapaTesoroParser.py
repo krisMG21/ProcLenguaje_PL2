@@ -1,4 +1,4 @@
-# Generated from MapaPruebas.g4 by ANTLR 4.13.2
+# Generated from MapaTesoro.g4 by ANTLR 4.13.2
 # encoding: utf-8
 from antlr4 import *
 from io import StringIO
@@ -10,21 +10,23 @@ else:
 
 def serializedATN():
     return [
-        4,1,8,36,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,1,0,1,0,1,0,5,0,
-        14,8,0,10,0,12,0,17,9,0,1,1,1,1,1,1,1,2,1,2,1,2,1,2,1,2,1,2,1,3,
-        1,3,1,3,1,3,1,4,1,4,1,4,1,4,1,4,0,0,5,0,2,4,6,8,0,0,32,0,10,1,0,
-        0,0,2,18,1,0,0,0,4,21,1,0,0,0,6,27,1,0,0,0,8,31,1,0,0,0,10,15,3,
-        2,1,0,11,14,3,4,2,0,12,14,3,6,3,0,13,11,1,0,0,0,13,12,1,0,0,0,14,
-        17,1,0,0,0,15,13,1,0,0,0,15,16,1,0,0,0,16,1,1,0,0,0,17,15,1,0,0,
-        0,18,19,5,5,0,0,19,20,5,7,0,0,20,3,1,0,0,0,21,22,5,5,0,0,22,23,5,
-        1,0,0,23,24,5,6,0,0,24,25,5,2,0,0,25,26,5,7,0,0,26,5,1,0,0,0,27,
-        28,5,5,0,0,28,29,5,3,0,0,29,30,3,8,4,0,30,7,1,0,0,0,31,32,5,6,0,
-        0,32,33,5,4,0,0,33,34,5,6,0,0,34,9,1,0,0,0,2,13,15
+        4,1,8,40,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,1,0,1,0,1,0,5,0,
+        14,8,0,10,0,12,0,17,9,0,1,0,1,0,1,1,1,1,1,1,1,2,1,2,1,2,1,2,1,2,
+        1,2,1,3,1,3,1,3,1,3,3,3,34,8,3,1,4,1,4,1,4,1,4,1,4,0,0,5,0,2,4,6,
+        8,0,0,37,0,10,1,0,0,0,2,20,1,0,0,0,4,23,1,0,0,0,6,29,1,0,0,0,8,35,
+        1,0,0,0,10,15,3,2,1,0,11,14,3,4,2,0,12,14,3,6,3,0,13,11,1,0,0,0,
+        13,12,1,0,0,0,14,17,1,0,0,0,15,13,1,0,0,0,15,16,1,0,0,0,16,18,1,
+        0,0,0,17,15,1,0,0,0,18,19,5,0,0,1,19,1,1,0,0,0,20,21,5,5,0,0,21,
+        22,5,7,0,0,22,3,1,0,0,0,23,24,5,5,0,0,24,25,5,1,0,0,25,26,5,6,0,
+        0,26,27,5,2,0,0,27,28,5,7,0,0,28,5,1,0,0,0,29,30,5,5,0,0,30,31,5,
+        3,0,0,31,33,3,8,4,0,32,34,5,7,0,0,33,32,1,0,0,0,33,34,1,0,0,0,34,
+        7,1,0,0,0,35,36,5,6,0,0,36,37,5,4,0,0,37,38,5,6,0,0,38,9,1,0,0,0,
+        3,13,15,33
     ]
 
-class MapaPruebasParser ( Parser ):
+class MapaTesoroParser ( Parser ):
 
-    grammarFileName = "MapaPruebas.g4"
+    grammarFileName = "MapaTesoro.g4"
 
     atn = ATNDeserializer().deserialize(serializedATN())
 
@@ -73,25 +75,28 @@ class MapaPruebasParser ( Parser ):
             self.parser = parser
 
         def titulo(self):
-            return self.getTypedRuleContext(MapaPruebasParser.TituloContext,0)
+            return self.getTypedRuleContext(MapaTesoroParser.TituloContext,0)
 
+
+        def EOF(self):
+            return self.getToken(MapaTesoroParser.EOF, 0)
 
         def puntos(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(MapaPruebasParser.PuntosContext)
+                return self.getTypedRuleContexts(MapaTesoroParser.PuntosContext)
             else:
-                return self.getTypedRuleContext(MapaPruebasParser.PuntosContext,i)
+                return self.getTypedRuleContext(MapaTesoroParser.PuntosContext,i)
 
 
         def localizacion(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(MapaPruebasParser.LocalizacionContext)
+                return self.getTypedRuleContexts(MapaTesoroParser.LocalizacionContext)
             else:
-                return self.getTypedRuleContext(MapaPruebasParser.LocalizacionContext,i)
+                return self.getTypedRuleContext(MapaTesoroParser.LocalizacionContext,i)
 
 
         def getRuleIndex(self):
-            return MapaPruebasParser.RULE_mapa
+            return MapaTesoroParser.RULE_mapa
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterMapa" ):
@@ -106,7 +111,7 @@ class MapaPruebasParser ( Parser ):
 
     def mapa(self):
 
-        localctx = MapaPruebasParser.MapaContext(self, self._ctx, self.state)
+        localctx = MapaTesoroParser.MapaContext(self, self._ctx, self.state)
         self.enterRule(localctx, 0, self.RULE_mapa)
         self._la = 0 # Token type
         try:
@@ -135,6 +140,8 @@ class MapaPruebasParser ( Parser ):
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
+            self.state = 18
+            self.match(MapaTesoroParser.EOF)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -152,13 +159,13 @@ class MapaPruebasParser ( Parser ):
             self.parser = parser
 
         def STRING(self):
-            return self.getToken(MapaPruebasParser.STRING, 0)
+            return self.getToken(MapaTesoroParser.STRING, 0)
 
         def NEWLINE(self):
-            return self.getToken(MapaPruebasParser.NEWLINE, 0)
+            return self.getToken(MapaTesoroParser.NEWLINE, 0)
 
         def getRuleIndex(self):
-            return MapaPruebasParser.RULE_titulo
+            return MapaTesoroParser.RULE_titulo
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterTitulo" ):
@@ -173,14 +180,14 @@ class MapaPruebasParser ( Parser ):
 
     def titulo(self):
 
-        localctx = MapaPruebasParser.TituloContext(self, self._ctx, self.state)
+        localctx = MapaTesoroParser.TituloContext(self, self._ctx, self.state)
         self.enterRule(localctx, 2, self.RULE_titulo)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 18
-            self.match(MapaPruebasParser.STRING)
-            self.state = 19
-            self.match(MapaPruebasParser.NEWLINE)
+            self.state = 20
+            self.match(MapaTesoroParser.STRING)
+            self.state = 21
+            self.match(MapaTesoroParser.NEWLINE)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -198,16 +205,16 @@ class MapaPruebasParser ( Parser ):
             self.parser = parser
 
         def STRING(self):
-            return self.getToken(MapaPruebasParser.STRING, 0)
+            return self.getToken(MapaTesoroParser.STRING, 0)
 
         def NUMBER(self):
-            return self.getToken(MapaPruebasParser.NUMBER, 0)
+            return self.getToken(MapaTesoroParser.NUMBER, 0)
 
         def NEWLINE(self):
-            return self.getToken(MapaPruebasParser.NEWLINE, 0)
+            return self.getToken(MapaTesoroParser.NEWLINE, 0)
 
         def getRuleIndex(self):
-            return MapaPruebasParser.RULE_puntos
+            return MapaTesoroParser.RULE_puntos
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterPuntos" ):
@@ -222,20 +229,20 @@ class MapaPruebasParser ( Parser ):
 
     def puntos(self):
 
-        localctx = MapaPruebasParser.PuntosContext(self, self._ctx, self.state)
+        localctx = MapaTesoroParser.PuntosContext(self, self._ctx, self.state)
         self.enterRule(localctx, 4, self.RULE_puntos)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 21
-            self.match(MapaPruebasParser.STRING)
-            self.state = 22
-            self.match(MapaPruebasParser.T__0)
             self.state = 23
-            self.match(MapaPruebasParser.NUMBER)
+            self.match(MapaTesoroParser.STRING)
             self.state = 24
-            self.match(MapaPruebasParser.T__1)
+            self.match(MapaTesoroParser.T__0)
             self.state = 25
-            self.match(MapaPruebasParser.NEWLINE)
+            self.match(MapaTesoroParser.NUMBER)
+            self.state = 26
+            self.match(MapaTesoroParser.T__1)
+            self.state = 27
+            self.match(MapaTesoroParser.NEWLINE)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -253,14 +260,17 @@ class MapaPruebasParser ( Parser ):
             self.parser = parser
 
         def STRING(self):
-            return self.getToken(MapaPruebasParser.STRING, 0)
+            return self.getToken(MapaTesoroParser.STRING, 0)
 
         def coordenada(self):
-            return self.getTypedRuleContext(MapaPruebasParser.CoordenadaContext,0)
+            return self.getTypedRuleContext(MapaTesoroParser.CoordenadaContext,0)
 
+
+        def NEWLINE(self):
+            return self.getToken(MapaTesoroParser.NEWLINE, 0)
 
         def getRuleIndex(self):
-            return MapaPruebasParser.RULE_localizacion
+            return MapaTesoroParser.RULE_localizacion
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterLocalizacion" ):
@@ -275,16 +285,25 @@ class MapaPruebasParser ( Parser ):
 
     def localizacion(self):
 
-        localctx = MapaPruebasParser.LocalizacionContext(self, self._ctx, self.state)
+        localctx = MapaTesoroParser.LocalizacionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 6, self.RULE_localizacion)
+        self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 27
-            self.match(MapaPruebasParser.STRING)
-            self.state = 28
-            self.match(MapaPruebasParser.T__2)
             self.state = 29
+            self.match(MapaTesoroParser.STRING)
+            self.state = 30
+            self.match(MapaTesoroParser.T__2)
+            self.state = 31
             self.coordenada()
+            self.state = 33
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            if _la==7:
+                self.state = 32
+                self.match(MapaTesoroParser.NEWLINE)
+
+
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -303,12 +322,12 @@ class MapaPruebasParser ( Parser ):
 
         def NUMBER(self, i:int=None):
             if i is None:
-                return self.getTokens(MapaPruebasParser.NUMBER)
+                return self.getTokens(MapaTesoroParser.NUMBER)
             else:
-                return self.getToken(MapaPruebasParser.NUMBER, i)
+                return self.getToken(MapaTesoroParser.NUMBER, i)
 
         def getRuleIndex(self):
-            return MapaPruebasParser.RULE_coordenada
+            return MapaTesoroParser.RULE_coordenada
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterCoordenada" ):
@@ -323,16 +342,16 @@ class MapaPruebasParser ( Parser ):
 
     def coordenada(self):
 
-        localctx = MapaPruebasParser.CoordenadaContext(self, self._ctx, self.state)
+        localctx = MapaTesoroParser.CoordenadaContext(self, self._ctx, self.state)
         self.enterRule(localctx, 8, self.RULE_coordenada)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 31
-            self.match(MapaPruebasParser.NUMBER)
-            self.state = 32
-            self.match(MapaPruebasParser.T__3)
-            self.state = 33
-            self.match(MapaPruebasParser.NUMBER)
+            self.state = 35
+            self.match(MapaTesoroParser.NUMBER)
+            self.state = 36
+            self.match(MapaTesoroParser.T__3)
+            self.state = 37
+            self.match(MapaTesoroParser.NUMBER)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)

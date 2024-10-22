@@ -1,4 +1,4 @@
-grammar MapaPruebas;
+grammar MapaTesoro;
 
 // Parser Rules
 mapa            : titulo (puntos | localizacion)* EOF ;

@@ -1,37 +1,37 @@
 grammar Basic;
 
-// PARSER
-program: (statement (NEWLINE+ | EOF)?)*;
+// PARSER RULES
+program: (statement NEWLINE+)* statement? EOF;
 
 statement: 
     letStmt | opStmt | printStmt | inputStmt | ifStmt | forStmt | whileStmt | repeatStmt | keyStmt;
 
 letStmt:
-    ('LET' | 'let') ID '=' expression;
+    LET_KW ID '=' expression;
 
 opStmt:
     ID '=' expression;
 
 printStmt: 
-    ('PRINT' | 'print') expression;
+    PRINT_KW expression;
 
 inputStmt: 
-    ('INPUT' | 'input') STRING_LITERAL ID;
+    INPUT_KW STRING_LITERAL ID;
 
 ifStmt:
-    ('IF' | 'if') condition ('THEN' | 'then') NEWLINE (statement NEWLINE)* (('ELSE' | 'else') NEWLINE (statement NEWLINE)*)? ('END' | 'end');
+    IF_KW condition THEN_KW NEWLINE (statement NEWLINE)* (ELSE_KW NEWLINE (statement NEWLINE)*)? END_KW;
 
 forStmt: 
-    ('FOR' | 'for') ID '=' expression ('TO' | 'to') expression NEWLINE (statement NEWLINE)* 'NEXT';
+    FOR_KW ID '=' expression TO_KW expression NEWLINE (statement NEWLINE)* NEXT_KW;
 
 whileStmt: 
-    ('WHILE' | 'while') condition NEWLINE (statement NEWLINE)* 'END';
+    WHILE_KW condition NEWLINE (statement NEWLINE)* END_KW;
 
 repeatStmt: 
-    ('REPEAT' | 'repeat') NEWLINE (statement NEWLINE)* ('UNTIL' | 'until') condition;
+    REPEAT_KW NEWLINE (statement NEWLINE)* UNTIL_KW condition;
 
 keyStmt:
-    ('CONTINUE' | 'continue') | ('EXIT' | 'exit') ;
+    CONTINUE_KW | EXIT_KW;
 
 condition: 
     expression comparisonOp expression | expression;
@@ -39,13 +39,33 @@ condition:
 comparisonOp: '<' | '>' | '<=' | '>=' | '=';
 
 expression: 
-    expression ('+' | '-' | '*' | '/' | 'MOD') expression 
+    expression ('+' | '-' | '*' | '/' | MOD_KW) expression 
     | '(' expression ')'  | functionCall | NUMBER | STRING_LITERAL | ID;
 
 functionCall : 
-    'VAL' '(' expression ')' | 'LEN' '(' expression ')' | 'ISNAN' '(' expression ')';
+    VAL_KW '(' expression ')' | LEN_KW '(' expression ')' | ISNAN_KW '(' expression ')';
 
-// LEXER
+// LEXER RULES
+LET_KW : 'LET' | 'let';
+PRINT_KW : 'PRINT' | 'print' ;
+INPUT_KW : 'INPUT' | 'input' ;
+IF_KW : 'IF' | 'if' ;
+ELSE_KW : 'ELSE' | 'else' ;
+FOR_KW : 'FOR' | 'for' ;
+TO_KW : 'TO' | 'to' ;
+NEXT_KW : 'NEXT' | 'next' ;
+WHILE_KW : 'WHILE' | 'while' ;
+REPEAT_KW : 'REPEAT' | 'repeat' ;
+UNTIL_KW : 'UNTIL' | 'until' ;
+CONTINUE_KW : 'CONTINUE' | 'continue' ;
+EXIT_KW : 'EXIT' | 'exit' ;
+END_KW : 'END' | 'end' ;
+THEN_KW : 'THEN' | 'then' ;
+MOD_KW : 'MOD' | 'mod' ;
+VAL_KW : 'VAL' | 'val' ;
+LEN_KW : 'LEN' | 'len' ;
+ISNAN_KW : 'ISNAN' | 'isnan' ;
+
 ID: [a-zA-Z_][a-zA-Z0-9_]*;
 NUMBER: [0-9]+ ('.' [0-9]+)?;
 STRING_LITERAL: '"' (~["\r\n])* '"';
