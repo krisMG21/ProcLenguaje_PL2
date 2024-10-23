@@ -21,6 +21,10 @@ Para descargar el ANTLR para `Python` se puede usar el siguiente comando:
 
 ```bash
 $ pip install antlr4-python3-runtime
+(downloads libraries)
+
+$ pip install antrl4-tools
+(downloads executables)
 ```
 
 ## Uso del ANTLR
