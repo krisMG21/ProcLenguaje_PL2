@@ -7,16 +7,10 @@ from TreePrinter import TreePrinter
 
 
 class Mapa:
-    def __init__(self, text: str, min_size: int = 0):
-        self.min_size = min_size
+    def __init__(self, text: str):
         self.titulo, self.barcos, self.size, self.tree = self.parse_map(text)
 
-        max_x, max_y = (
-            max(self.size[0], min_size),
-            max(self.size[1], min_size),
-        )
-
-        self.mapa = [[None for _ in range(max_x)] for _ in range(max_y)]
+        self.mapa = [[None for _ in range(self.size[0])] for _ in range(self.size[1])]
 
         for barco in self.barcos:
             self.mapa[barco.coordenadas[0] - 1][barco.coordenadas[1] - 1] = barco
@@ -30,7 +24,21 @@ class Mapa:
     def get_barcos(self):
         return self.barcos
 
+    def try_coord(self, x: int, y: int):
+        """Extrae el barco en la coordenada x,y, o None si no existe"""
+        try:
+            if self.mapa[x][y] is None:
+                return None
+
+            barco = self.mapa[x][y]
+            self.mapa[x][y] = None
+            return barco
+
+        except IndexError:
+            return None
+
     def as_map(self):
+        """Devuelve una representación del mapa como casillas simples"""
         res = ""
         for row in self.mapa:
             for elem in row:
@@ -39,18 +47,36 @@ class Mapa:
             res += "\n"
         return res
 
+    def as_matrix(self):
+        """Devuelve el contenido del mapa de forma ordenada en forma de cadena"""
+        res = " "
+        for row in self.mapa:
+            for elem in row:
+                res += str(elem) + ", "
+            res = res[:-2] + "\n"
+        return res
+
     def as_tree(self):
+        """Recorre e imprime el mapa en forma de árbol detallado"""
         printer = TreePrinter()
         walker = ParseTreeWalker()
         walker.walk(printer, self.tree)
 
+        return printer.output.getvalue()
+
     def parse_map(self, text: str):
+        """Procesa el archivo de entrada, y extrae los datos del mapa:
+        - titulo
+        - tamaño
+        - barcos (puntos y coordenadas)
+        - arbol de parseo
+        """
         lexer: MapaTesoroLexer = MapaTesoroLexer(InputStream(text))
         tokens: CommonTokenStream = CommonTokenStream(lexer)
         parser: MapaTesoroParser = MapaTesoroParser(tokens)
         tree: ParseTree = parser.mapa()
 
-        print(tree.toStringTree(recog=parser))
+        # print(tree.toStringTree(recog=parser))
 
         listener: MapaListener = MapaListener()
         walker: ParseTreeWalker = ParseTreeWalker()
