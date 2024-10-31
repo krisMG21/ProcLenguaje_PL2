@@ -1,80 +1,86 @@
 Mapa
-|  Titulo
-|  |  STRING: "Mapa de pruebas"
-|  |  NEWLINE: 
-
-|  Tamaño
-|  |  <INVALID>: El mapa tiene
-|  |  NUMBER: 1
-|  |  <INVALID>: filas y
-|  |  NUMBER: 1
-|  |  <INVALID>: columnas
-|  |  NEWLINE: 
-
-|  Puntos
-|  |  STRING: "El Titanic"
-|  |  <INVALID>: te da
-|  |  NUMBER: 50
-|  |  <INVALID>: puntos
-|  |  NEWLINE: 
-
-|  Puntos
-|  |  STRING: "El Santa Maria"
-|  |  <INVALID>: te da
-|  |  NUMBER: 20
-|  |  <INVALID>: puntos
-|  |  NEWLINE: 
-
-|  Puntos
-|  |  STRING: "La Chatarra"
-|  |  <INVALID>: te da
-|  |  NUMBER: 1
-|  |  <INVALID>: puntos
-|  |  NEWLINE: 
-
-|  Localizacion
-|  |  STRING: "El Titanic"
-|  |  <INVALID>: está enterrado en
-|  |  Coordenada
-|  |  |  NUMBER: 3
-|  |  |  <INVALID>: ,
-|  |  |  NUMBER: 1
-|  |  NEWLINE: 
-
-|  Localizacion
-|  |  STRING: "El Santa Maria"
-|  |  <INVALID>: está enterrado en
-|  |  Coordenada
-|  |  |  NUMBER: 2
-|  |  |  <INVALID>: ,
-|  |  |  NUMBER: 3
-|  |  NEWLINE: 
-
-|  Localizacion
-|  |  STRING: "La Chatarra"
-|  |  <INVALID>: está enterrado en
-|  |  Coordenada
-|  |  |  NUMBER: 3
-|  |  |  <INVALID>: ,
-|  |  |  NUMBER: 2
-|  |  NEWLINE: 
-
-|  Localizacion
-|  |  STRING: "La Chatarra"
-|  |  <INVALID>: está enterrado en
-|  |  Coordenada
-|  |  |  NUMBER: 1
-|  |  |  <INVALID>: ,
-|  |  |  NUMBER: 4
-|  |  NEWLINE: 
-
-|  Localizacion
-|  |  STRING: "La Chatarra"
-|  |  <INVALID>: está enterrado en
-|  |  Coordenada
-|  |  |  NUMBER: 4
-|  |  |  <INVALID>: ,
-|  |  |  NUMBER: 1
-|  |  NEWLINE: 
-
-|  WS: <EOF>
+| Titulo
+| | STRING: "Mapa de pruebas"
+| | NEWLINE
+| └──────────────────────────────────────────────────────────────
+| Tamaño
+| | El mapa tiene
+| | NUMBER: 5
+| | filas y
+| | NUMBER: 5
+| | columnas
+| | NEWLINE
+| └──────────────────────────────────────────────────────────────
+| Puntos
+| | STRING: "El Titanic"
+| | te da
+| | NUMBER: 50
+| | puntos
+| | NEWLINE
+| └──────────────────────────────────────────────────────────────
+| Puntos
+| | STRING: "El Santa Maria"
+| | te da
+| | NUMBER: 20
+| | puntos
+| | NEWLINE
+| └──────────────────────────────────────────────────────────────
+| Puntos
+| | STRING: "La Chatarra"
+| | te da
+| | NUMBER: 1
+| | puntos
+| | NEWLINE
+| └──────────────────────────────────────────────────────────────
+| Localizacion
+| | STRING: "El Titanic"
+| | está enterrado en
+| | Coordenada
+| | | NUMBER: 3
+| | | ,
+| | | NUMBER: 1
+| | └──────────────────────────────────────────────────────────────
+| | NEWLINE
+| └──────────────────────────────────────────────────────────────
+| Localizacion
+| | STRING: "El Santa Maria"
+| | está enterrado en
+| | Coordenada
+| | | NUMBER: 2
+| | | ,
+| | | NUMBER: 3
+| | └──────────────────────────────────────────────────────────────
+| | NEWLINE
+| └──────────────────────────────────────────────────────────────
+| Localizacion
+| | STRING: "La Chatarra"
+| | está enterrado en
+| | Coordenada
+| | | NUMBER: 3
+| | | ,
+| | | NUMBER: 2
+| | └──────────────────────────────────────────────────────────────
+| | NEWLINE
+| └──────────────────────────────────────────────────────────────
+| Localizacion
+| | STRING: "La Chatarra"
+| | está enterrado en
+| | Coordenada
+| | | NUMBER: 1
+| | | ,
+| | | NUMBER: 4
+| | └──────────────────────────────────────────────────────────────
+| | NEWLINE
+| └──────────────────────────────────────────────────────────────
+| Localizacion
+| | STRING: "La Chatarra"
+| | está enterrado en
+| | Coordenada
+| | | NUMBER: 4
+| | | ,
+| | | NUMBER: 1
+| | └──────────────────────────────────────────────────────────────
+| | NEWLINE
+| └──────────────────────────────────────────────────────────────
+| <EOF>
+└──────────────────────────────────────────────────────────────

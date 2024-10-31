@@ -7,6 +7,8 @@ def main():
 
     with open("mapa.tree", "w") as file:
         file.write(mapa.as_tree())
+
+    print("Tree succesfully written in 'mapa.tree'")
     return 0
 
 

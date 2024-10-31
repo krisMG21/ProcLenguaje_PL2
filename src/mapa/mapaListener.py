@@ -21,7 +21,6 @@ class MapaListener(MapaTesoroListener):
             int(ctx.NUMBER(0).getText()),
             int(ctx.NUMBER(1).getText()),
         )
-        print("Tamaño por defecto:", self.size)
 
     def enterPuntos(self, ctx):
         """Cuando llega a un nodo puntos, guarda el barco y su valor en puntos"""
@@ -35,9 +34,6 @@ class MapaListener(MapaTesoroListener):
 
         self.barcos.append(Barco(nombre, puntos=puntos))
 
-        for barco in self.barcos:
-            print(barco)
-
     def enterLocalizacion(self, ctx):
         """Cuando llega a un nodo localizacion:
         - Si hay un barco con ese nombre, sin coordenadas, se las asigna
@@ -47,7 +43,6 @@ class MapaListener(MapaTesoroListener):
 
     def enterCoordenada(self, ctx):
         coordenadas = [int(ctx.NUMBER(i).getText()) for i in range(2)]
-        print(coordenadas)
 
         # Si no se establece el tamaño, se ajusta al contenido
         self.size = (
