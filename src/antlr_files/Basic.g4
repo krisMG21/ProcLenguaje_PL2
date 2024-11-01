@@ -3,68 +3,71 @@ grammar Basic;
 // PARSER RULES
 program: (statement NEWLINE+)* statement? EOF;
 
-statement: 
+statement:
     letStmt | opStmt | printStmt | inputStmt | ifStmt | forStmt | whileStmt | repeatStmt | keyStmt;
 
 letStmt:
-    LET_KW ID '=' expression;
+    LET ID '=' expression;
 
 opStmt:
     ID '=' expression;
 
-printStmt: 
-    PRINT_KW expression;
+printStmt:
+    PRINT expression;
 
-inputStmt: 
-    INPUT_KW STRING_LITERAL ID;
+inputStmt:
+    INPUT STRING_LITERAL ID;
 
 ifStmt:
-    IF_KW condition THEN_KW NEWLINE (statement NEWLINE)* (ELSE_KW NEWLINE (statement NEWLINE)*)? END_KW;
+    IF condition THEN NEWLINE (statement NEWLINE)* (ELSE NEWLINE (statement NEWLINE)*)? END;
 
-forStmt: 
-    FOR_KW ID '=' expression TO_KW expression NEWLINE (statement NEWLINE)* NEXT_KW;
+forStmt:
+    FOR ID '=' expression TO expression NEWLINE (statement NEWLINE)* NEXT;
 
-whileStmt: 
-    WHILE_KW condition NEWLINE (statement NEWLINE)* END_KW;
+whileStmt:
+    WHILE condition NEWLINE (statement NEWLINE)* END;
 
-repeatStmt: 
-    REPEAT_KW NEWLINE (statement NEWLINE)* UNTIL_KW condition;
+repeatStmt:
+    REPEAT NEWLINE (statement NEWLINE)* UNTIL condition;
 
 keyStmt:
-    CONTINUE_KW | EXIT_KW;
+    CONTINUE | EXIT;
 
-condition: 
+condition:
     expression comparisonOp expression | expression;
 
 comparisonOp: '<' | '>' | '<=' | '>=' | '=';
 
-expression: 
-    expression ('+' | '-' | '*' | '/' | MOD_KW) expression 
-    | '(' expression ')'  | functionCall | NUMBER | STRING_LITERAL | ID;
+expression:
+    expression op expression | '(' expression ')'  | functionCall |
+    NUMBER | STRING_LITERAL | ID;
 
-functionCall : 
-    VAL_KW '(' expression ')' | LEN_KW '(' expression ')' | ISNAN_KW '(' expression ')';
+op: 
+    '+' | '-' | '*' | '/' | MOD;
+
+functionCall :
+    VAL '(' expression ')' | LEN '(' expression ')' | ISNAN '(' expression ')';
 
 // LEXER RULES
-LET_KW : 'LET' | 'let';
-PRINT_KW : 'PRINT' | 'print' ;
-INPUT_KW : 'INPUT' | 'input' ;
-IF_KW : 'IF' | 'if' ;
-ELSE_KW : 'ELSE' | 'else' ;
-FOR_KW : 'FOR' | 'for' ;
-TO_KW : 'TO' | 'to' ;
-NEXT_KW : 'NEXT' | 'next' ;
-WHILE_KW : 'WHILE' | 'while' ;
-REPEAT_KW : 'REPEAT' | 'repeat' ;
-UNTIL_KW : 'UNTIL' | 'until' ;
-CONTINUE_KW : 'CONTINUE' | 'continue' ;
-EXIT_KW : 'EXIT' | 'exit' ;
-END_KW : 'END' | 'end' ;
-THEN_KW : 'THEN' | 'then' ;
-MOD_KW : 'MOD' | 'mod' ;
-VAL_KW : 'VAL' | 'val' ;
-LEN_KW : 'LEN' | 'len' ;
-ISNAN_KW : 'ISNAN' | 'isnan' ;
+LET : 'LET' | 'let';
+PRINT : 'PRINT' | 'print' ;
+INPUT : 'INPUT' | 'input' ;
+IF : 'IF' | 'if' ;
+ELSE : 'ELSE' | 'else' ;
+FOR : 'FOR' | 'for' ;
+TO : 'TO' | 'to' ;
+NEXT : 'NEXT' | 'next' ;
+WHILE : 'WHILE' | 'while' ;
+REPEAT : 'REPEAT' | 'repeat' ;
+UNTIL : 'UNTIL' | 'until' ;
+CONTINUE : 'CONTINUE' | 'continue' ;
+EXIT : 'EXIT' | 'exit' ;
+END : 'END' | 'end' ;
+THEN : 'THEN' | 'then' ;
+MOD : 'MOD' | 'mod' ;
+VAL : 'VAL' | 'val' ;
+LEN : 'LEN' | 'len' ;
+ISNAN : 'ISNAN' | 'isnan' ;
 
 ID: [a-zA-Z_][a-zA-Z0-9_]*;
 NUMBER: [0-9]+ ('.' [0-9]+)?;
