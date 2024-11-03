@@ -3,7 +3,7 @@ from antlr4.ParserRuleContext import ParseTree
 from MapaTesoroParser import MapaTesoroParser
 from MapaTesoroLexer import MapaTesoroLexer
 from MapaListener import MapaListener
-from ToStrTreeListener import ToTxtTreeListener
+from ToStrTreeListener import ToStrTreeListener
 
 
 class Mapa:
@@ -58,7 +58,7 @@ class Mapa:
 
     def as_tree(self):
         """Recorre e imprime el mapa en forma de árbol detallado"""
-        printer = ToTxtTreeListener(MapaTesoroParser)
+        printer = ToStrTreeListener(MapaTesoroParser)
         walker = ParseTreeWalker()
         walker.walk(printer, self.tree)
 

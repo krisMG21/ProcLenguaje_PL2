@@ -2,8 +2,8 @@ grammar MapaTesoro;
 
 // Parser Rules
 mapa            : titulo tamaño? puntos* localizacion* EOF ;
-tamaño          : STRING 'tiene' NUMBER 'filas' NUMBER 'columnas' NEWLINE ;
 titulo          : STRING NEWLINE ;
+tamaño          : STRING 'tiene' NUMBER 'filas' NUMBER 'columnas' NEWLINE ;
 puntos          : STRING 'te da' NUMBER 'puntos' NEWLINE ;
 localizacion    : STRING 'está enterrado en' coordenada NEWLINE ;
 coordenada      : NUMBER ',' NUMBER;

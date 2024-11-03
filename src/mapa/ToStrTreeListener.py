@@ -1,7 +1,7 @@
 from antlr4 import ParseTreeListener
 
 
-class ToTxtTreeListener(ParseTreeListener):
+class ToStrTreeListener(ParseTreeListener):
     def __init__(self, parser):
         self.indent = 0
         self.output = ""
