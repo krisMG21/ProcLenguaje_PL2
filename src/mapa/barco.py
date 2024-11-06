@@ -1,12 +1,7 @@
 class Barco:
     """Objeto que representa un barco, con su nombre, coordenadas y puntos."""
 
-    def __init__(self, nombre, coordenadas=[], puntos=0):
-        """
-        nomber: str
-        coordenadas: int[2]
-        puntos: int
-        """
+    def __init__(self, nombre: str, coordenadas: list = [], puntos: int = 0):
         self.nombre = nombre
         self.puntos = puntos
         self.coordenadas = coordenadas
