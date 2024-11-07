@@ -7,7 +7,7 @@ class Obstaculo:
         self.coordenadas = coordenadas
 
     def __str__(self):
-        return f"{self.nombre}: (puntos={self.daño}, coordenadas={self.coordenadas})"
+        return f"{self.nombre}:\t(daño={self.daño}, coordenadas={self.coordenadas})"
 
     def full(self):
-        return self.coordenadas != ()
+        return len(self.coordenadas)

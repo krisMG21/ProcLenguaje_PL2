@@ -8,12 +8,30 @@ else:
 # This class defines a complete listener for a parse tree produced by MapaTesoroParser.
 class MapaTesoroListener(ParseTreeListener):
 
+    # Enter a parse tree produced by MapaTesoroParser#nivel.
+    def enterNivel(self, ctx:MapaTesoroParser.NivelContext):
+        pass
+
+    # Exit a parse tree produced by MapaTesoroParser#nivel.
+    def exitNivel(self, ctx:MapaTesoroParser.NivelContext):
+        pass
+
+
     # Enter a parse tree produced by MapaTesoroParser#mapa.
     def enterMapa(self, ctx:MapaTesoroParser.MapaContext):
         pass
 
     # Exit a parse tree produced by MapaTesoroParser#mapa.
     def exitMapa(self, ctx:MapaTesoroParser.MapaContext):
+        pass
+
+
+    # Enter a parse tree produced by MapaTesoroParser#jugador.
+    def enterJugador(self, ctx:MapaTesoroParser.JugadorContext):
+        pass
+
+    # Exit a parse tree produced by MapaTesoroParser#jugador.
+    def exitJugador(self, ctx:MapaTesoroParser.JugadorContext):
         pass
 
 
@@ -44,6 +62,15 @@ class MapaTesoroListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by MapaTesoroParser#daño.
+    def enterDaño(self, ctx:MapaTesoroParser.DañoContext):
+        pass
+
+    # Exit a parse tree produced by MapaTesoroParser#daño.
+    def exitDaño(self, ctx:MapaTesoroParser.DañoContext):
+        pass
+
+
     # Enter a parse tree produced by MapaTesoroParser#localizacion.
     def enterLocalizacion(self, ctx:MapaTesoroParser.LocalizacionContext):
         pass
@@ -59,6 +86,15 @@ class MapaTesoroListener(ParseTreeListener):
 
     # Exit a parse tree produced by MapaTesoroParser#coordenada.
     def exitCoordenada(self, ctx:MapaTesoroParser.CoordenadaContext):
+        pass
+
+
+    # Enter a parse tree produced by MapaTesoroParser#vida.
+    def enterVida(self, ctx:MapaTesoroParser.VidaContext):
+        pass
+
+    # Exit a parse tree produced by MapaTesoroParser#vida.
+    def exitVida(self, ctx:MapaTesoroParser.VidaContext):
         pass
 
 

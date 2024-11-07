@@ -14,7 +14,6 @@ class ToStrTreeListener(ParseTreeListener):
 
     def exitEveryRule(self, ctx):
         self.indent -= 1
-        self.output += "\n" + "| " * self.indent + "\n"
 
     def visitTerminal(self, node):
         token_text = node.getText()
@@ -29,8 +28,9 @@ class ToStrTreeListener(ParseTreeListener):
 
         if token_name == "<INVALID>" or token_text == "<EOF>":
             self.output += token_text
-        elif token_text == "\n":
+        elif token_name == "NEWLINE":
             self.output += token_name
+            self.output += "\n" + "| " * min(self.indent - 1, 1)
         else:
             self.output += f"{token_name}: {token_text}"
 

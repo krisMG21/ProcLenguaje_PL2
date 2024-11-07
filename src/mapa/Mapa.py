@@ -4,16 +4,29 @@ from MapaTesoroParser import MapaTesoroParser
 from MapaTesoroLexer import MapaTesoroLexer
 from MapaListener import MapaListener
 from ToStrTreeListener import ToStrTreeListener
+from Barco import Barco
+from Obstaculo import Obstaculo
 
 
 class Mapa:
     def __init__(self, text: str):
-        self.titulo, self.barcos, self.size, self.tree = self.parse_map(text)
+        self.titulo, self.barcos, self.obstaculos, self.size, self.tree = (
+            self.parse_map(text)
+        )
 
         self.mapa = [[None for _ in range(self.size[0])] for _ in range(self.size[1])]
 
         for barco in self.barcos:
-            self.mapa[barco.coordenadas[0] - 1][barco.coordenadas[1] - 1] = barco
+            x, y = barco.coordenadas[0] - 1, barco.coordenadas[1] - 1
+            assert self.mapa[x][y] is None
+
+            self.mapa[x][y] = barco
+
+        for obs in self.obstaculos:
+            x, y = obs.coordenadas[0] - 1, obs.coordenadas[1] - 1
+            assert self.mapa[x][y] is None
+
+            self.mapa[x][y] = obs
 
     def __getitem__(self, key: int):
         return self.mapa[key]
@@ -23,6 +36,9 @@ class Mapa:
 
     def get_barcos(self):
         return self.barcos
+
+    def get_obstaculos(self):
+        return self.obstaculos
 
     def try_coord(self, x: int, y: int):
         """Extrae el barco en la coordenada x,y, o None si no existe"""
@@ -43,7 +59,13 @@ class Mapa:
         for row in self.mapa:
             for elem in row:
                 res += " "
-                res += "[ ]" if elem is None else "[█]"
+                res += (
+                    "[█]"
+                    if isinstance(elem, Barco)
+                    else "[X]"
+                    if isinstance(elem, Obstaculo)
+                    else "[ ]"
+                )
             res += "\n"
         return res
 
@@ -74,7 +96,7 @@ class Mapa:
         lexer: MapaTesoroLexer = MapaTesoroLexer(InputStream(text))
         tokens: CommonTokenStream = CommonTokenStream(lexer)
         parser: MapaTesoroParser = MapaTesoroParser(tokens)
-        tree: ParseTree = parser.mapa()
+        tree: ParseTree = parser.nivel()
 
         # print(tree.toStringTree(recog=parser))
 
@@ -82,4 +104,10 @@ class Mapa:
         walker: ParseTreeWalker = ParseTreeWalker()
         walker.walk(listener, tree)
 
-        return listener.titulo, listener.barcos, listener.size, tree
+        return (
+            listener.titulo,
+            listener.barcos,
+            listener.obstaculos,
+            listener.size,
+            tree,
+        )

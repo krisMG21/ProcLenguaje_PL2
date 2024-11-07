@@ -2,16 +2,14 @@ Mapa
 | Titulo
 | | STRING: "Mapa de pruebas"
 | | NEWLINE
-
 | 
 | Tamaño
 | | El mapa tiene
-| | NUMBER: 0
+| | NUMBER: 4
 | | filas y
 | | NUMBER: 4
 | | columnas
 | | NEWLINE
-
 | 
 | Puntos
 | | STRING: "El Titanic"
@@ -19,7 +17,6 @@ Mapa
 | | NUMBER: 50
 | | puntos
 | | NEWLINE
-
 | 
 | Puntos
 | | STRING: "El Santa Maria"
@@ -27,7 +24,6 @@ Mapa
 | | NUMBER: 20
 | | puntos
 | | NEWLINE
-
 | 
 | Puntos
 | | STRING: "La Chatarra"
@@ -35,7 +31,6 @@ Mapa
 | | NUMBER: 1
 | | puntos
 | | NEWLINE
-
 | 
 | Localizacion
 | | STRING: "El Titanic"
@@ -44,10 +39,8 @@ Mapa
 | | | NUMBER: 3
 | | | ,
 | | | NUMBER: 1
-
 | | 
 | | NEWLINE
-
 | 
 | Localizacion
 | | STRING: "El Santa Maria"
@@ -56,10 +49,8 @@ Mapa
 | | | NUMBER: 2
 | | | ,
 | | | NUMBER: 3
-
 | | 
 | | NEWLINE
-
 | 
 | Localizacion
 | | STRING: "La Chatarra"
@@ -68,10 +59,8 @@ Mapa
 | | | NUMBER: 3
 | | | ,
 | | | NUMBER: 2
-
 | | 
 | | NEWLINE
-
 | 
 | Localizacion
 | | STRING: "La Chatarra"
@@ -80,10 +69,8 @@ Mapa
 | | | NUMBER: 1
 | | | ,
 | | | NUMBER: 4
-
 | | 
 | | NEWLINE
-
 | 
 | Localizacion
 | | STRING: "La Chatarra"
@@ -92,11 +79,8 @@ Mapa
 | | | NUMBER: 4
 | | | ,
 | | | NUMBER: 1
-
 | | 
 | | NEWLINE
-
 | 
 | <EOF>
-
 

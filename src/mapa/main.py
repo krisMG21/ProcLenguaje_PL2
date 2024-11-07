@@ -2,13 +2,7 @@ from Mapa import Mapa
 
 
 def main():
-    with open("ejemplo.field") as file:
-        mapa = Mapa(file.read())
-
-    with open("mapa.tree", "w") as file:
-        file.write(mapa.as_tree())
-
-    print("as_map: \n" + mapa.as_map())
+    test_mapa()
     return 0
 
 
@@ -24,6 +18,11 @@ def test_mapa():
     for barco in mapa.get_barcos():
         if barco:
             print(barco)
+
+    print("\nget_obstaculos: \n")
+    for obs in mapa.get_obstaculos():
+        if obs:
+            print(obs)
 
 
 if __name__ == "__main__":

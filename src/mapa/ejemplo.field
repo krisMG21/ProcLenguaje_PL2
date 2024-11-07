@@ -1,10 +1,24 @@
-"Mapa de pruebas"
+Mapa:
+"En medio del Atlántico"
 El mapa tiene 4 filas y 4 columnas
+
 "El Titanic" te da 50 puntos
 "El Santa Maria" te da 20 puntos
 "La Chatarra" te da 1 puntos
+
+"Bomba" hace 10 puntos de daño
+"Mina" hace 20 puntos de daño
+
 "El Titanic" está enterrado en 3,1
 "El Santa Maria" está enterrado en 2,3
 "La Chatarra" está enterrado en 3,2
 "La Chatarra" está enterrado en 1,4
 "La Chatarra" está enterrado en 4,1
+"Bomba" está enterrado en 2,2
+"Bomba" está enterrado en 4,2
+"Bomba" está enterrado en 1,3
+"Mina" está enterrado en 3,3
+"Mina" está enterrado en 4,3
+
+Jugador:
+Tiene 100 puntos de vida

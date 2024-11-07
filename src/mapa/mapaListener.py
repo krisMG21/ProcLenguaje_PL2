@@ -6,9 +6,9 @@ from Obstaculo import Obstaculo
 class MapaListener(MapaTesoroListener):
     def __init__(self):
         self.titulo = ""
-        self.curr_barco = None
+        self.elem_actual = ""
         self.barcos = []
-        self.obstaculo = []
+        self.obstaculos = []
         self.size = (0, 0)
 
     def enterTitulo(self, ctx):
@@ -17,7 +17,8 @@ class MapaListener(MapaTesoroListener):
         self.titulo = ctx.STRING().getText().strip('"')
 
     def enterTamaño(self, ctx):
-        """Cuando llega a un nodo tamaño, se guarda el tamaño del mapa y se queda fijo."""
+        """Cuando llega a un nodo tamaño, se guarda el tamaño minimo del mapa,
+        el cual se puede extender según lleguen coordenadas superiores"""
 
         self.size = (
             int(ctx.NUMBER(0).getText()),
@@ -36,17 +37,21 @@ class MapaListener(MapaTesoroListener):
 
         self.barcos.append(Barco(nombre, puntos=puntos))
 
-    def enterObstaculo(self, ctx):
+    def enterDaño(self, ctx):
         """Cuando llega a un obstáculo, crea y guarda el objeto"""
         nombre = ctx.STRING().getText().strip('"')
         daño = int(ctx.NUMBER().getText())
 
-        self.obstaculo.append(Obstaculo(nombre, daño))
+        for obstaculo in self.obstaculos:
+            if obstaculo.nombre == nombre and not obstaculo.daño:
+                obstaculo.daño = daño
+                return
+
+        self.obstaculos.append(Obstaculo(nombre, daño=daño))
 
     def enterLocalizacion(self, ctx):
-        """Cuando llega a un nodo localizacion:
-        - Si hay un barco con ese nombre, sin coordenadas, se las asigna
-        - Si no hay o tiene coordenadas, se crea un nuevo barco
+        """Cuando llega a un nodo localizacion, guarda el elemento actual para
+        asignarle luego coordenadas
         """
         self.elem_actual = ctx.STRING().getText().strip('"')
 
@@ -70,13 +75,13 @@ class MapaListener(MapaTesoroListener):
                     barco.coordenadas = coordenadas
                 break
 
-        for obstaculo in self.obstaculo:
+        for obstaculo in self.obstaculos:
             if obstaculo.nombre == self.elem_actual:
                 if obstaculo.full():
                     new_obstaculo = Obstaculo(
                         self.elem_actual, coordenadas, obstaculo.daño
                     )
-                    self.obstaculo.append(new_obstaculo)
+                    self.obstaculos.append(new_obstaculo)
                 else:
                     obstaculo.coordenadas = coordenadas
                 break
