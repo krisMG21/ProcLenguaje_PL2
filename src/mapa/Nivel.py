@@ -8,11 +8,24 @@ from Barco import Barco
 from Obstaculo import Obstaculo
 
 
-class Mapa:
+class Nivel:
     def __init__(self, text: str):
+        """Construye un nivel a partir del archivo dado
+        - text: contenido del archivo
+
+        Atributos:
+        - str titulo: titulo del nivel
+        - Barco[] barcos: lista de barcos del nivel
+        - Obstaculo[] obstaculos: lista de obstaculos del nivel
+        - [int] size: tamaño del mapa
+        - [][Obstaculo | Barco] mapa: mapa del nivel
+        - ParseTree tree: arbol de parseo del nivel
+        """
         self.titulo, self.barcos, self.obstaculos, self.size, self.tree = (
             self.parse_map(text)
         )
+
+        print(type(self.tree))
 
         self.mapa = [[None for _ in range(self.size[0])] for _ in range(self.size[1])]
 
