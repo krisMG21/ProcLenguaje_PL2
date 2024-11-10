@@ -25,8 +25,6 @@ class Nivel:
             self.parse_map(text)
         )
 
-        print(type(self.tree))
-
         self.mapa = [[None for _ in range(self.size[0])] for _ in range(self.size[1])]
 
         for barco in self.barcos:
