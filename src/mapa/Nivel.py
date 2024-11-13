@@ -4,7 +4,7 @@ from MapaTesoroParser import MapaTesoroParser
 from MapaTesoroLexer import MapaTesoroLexer
 from mapaListener import MapaListener
 from ToStrTreeListener import ToStrTreeListener
-from barco import Barco
+from Barco import Barco
 from Obstaculo import Obstaculo
 
 
@@ -26,9 +26,9 @@ class Nivel:
         self.titulo, self.barcos, self.obstaculos, self.size, self.tree = (
             self.parse_map(text)
         )
-        
+
         self.mapa = [[None for _ in range(self.size[0])] for _ in range(self.size[1])]
-        
+
         self.numero_barcos = 0
         print("Añadiendo barcos")
         try:
@@ -40,7 +40,11 @@ class Nivel:
 
                 self.mapa[x][y] = barco
         except:
-            print("Error añadiendo los barcos: se intenta añadir pos", barco.coordenadas[0] - 1, barco.coordenadas[1] - 1)
+            print(
+                "Error añadiendo los barcos: se intenta añadir pos",
+                barco.coordenadas[0] - 1,
+                barco.coordenadas[1] - 1,
+            )
 
         print("añadiendo obstaculos")
         for obs in self.obstaculos:
@@ -48,8 +52,6 @@ class Nivel:
             assert self.mapa[x][y] is None
 
             self.mapa[x][y] = obs
-
-        
 
     def __getitem__(self, key: int):
         return self.mapa[key]
