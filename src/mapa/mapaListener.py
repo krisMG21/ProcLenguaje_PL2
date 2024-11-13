@@ -1,5 +1,5 @@
 from MapaTesoroListener import MapaTesoroListener
-from Barco import Barco
+from barco import Barco
 from Obstaculo import Obstaculo
 
 

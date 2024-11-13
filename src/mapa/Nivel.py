@@ -2,9 +2,9 @@ from antlr4 import InputStream, CommonTokenStream, ParseTreeWalker
 from antlr4.ParserRuleContext import ParseTree
 from MapaTesoroParser import MapaTesoroParser
 from MapaTesoroLexer import MapaTesoroLexer
-from MapaListener import MapaListener
+from mapaListener import MapaListener
 from ToStrTreeListener import ToStrTreeListener
-from Barco import Barco
+from barco import Barco
 from Obstaculo import Obstaculo
 
 
@@ -21,23 +21,35 @@ class Nivel:
         - [][Obstaculo | Barco] mapa: mapa del nivel
         - ParseTree tree: arbol de parseo del nivel
         """
+        print("Dentro de nivel")
+        print("Parseando mapa")
         self.titulo, self.barcos, self.obstaculos, self.size, self.tree = (
             self.parse_map(text)
         )
-
+        
         self.mapa = [[None for _ in range(self.size[0])] for _ in range(self.size[1])]
+        
+        self.numero_barcos = 0
+        print("Añadiendo barcos")
+        try:
+            for barco in self.barcos:
+                self.numero_barcos += 1
+                print(barco.coordenadas)
+                x, y = barco.coordenadas[0] - 1, barco.coordenadas[1] - 1
+                assert self.mapa[x][y] is None
 
-        for barco in self.barcos:
-            x, y = barco.coordenadas[0] - 1, barco.coordenadas[1] - 1
-            assert self.mapa[x][y] is None
+                self.mapa[x][y] = barco
+        except:
+            print("Error añadiendo los barcos: se intenta añadir pos", barco.coordenadas[0] - 1, barco.coordenadas[1] - 1)
 
-            self.mapa[x][y] = barco
-
+        print("añadiendo obstaculos")
         for obs in self.obstaculos:
             x, y = obs.coordenadas[0] - 1, obs.coordenadas[1] - 1
             assert self.mapa[x][y] is None
 
             self.mapa[x][y] = obs
+
+        
 
     def __getitem__(self, key: int):
         return self.mapa[key]
