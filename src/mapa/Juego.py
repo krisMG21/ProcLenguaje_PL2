@@ -136,7 +136,7 @@ class Juego:
 
 
 # Archivos de nivel que deberás tener preparados
-niveles_files = ["Nivel1.txt", "Nivel2.txt" "Nivel3.txt"]
+niveles_files = ["Nivel1.txt", "Nivel2.txt", "Nivel3.txt"]
 
 juego = Juego(niveles_files)
 juego.iniciar()
