@@ -6,6 +6,7 @@ from BasicParser import BasicParser
 from BasicListener import BasicListener
 from ToStrTreeListener import ToStrTreeListener
 
+
 def as_tree(tree):
     """
     Recorre e imprime el mapa en forma de árbol detallado.
@@ -20,6 +21,7 @@ def as_tree(tree):
 
     return printer.output
 
+
 def main(argv):
     """
     Función principal que procesa el archivo de entrada y recorre el árbol de análisis sintáctico.
@@ -31,12 +33,9 @@ def main(argv):
     stream: CommonTokenStream = CommonTokenStream(lexer)
     parser: BasicParser = BasicParser(stream)
     tree: ParseTree = parser.program()
-        
-    listener: BasicListener = BasicListener()
-    walker: ParseTreeWalker = ParseTreeWalker()
-    walker.walk(listener, tree)
 
     print("as_tree: \n" + as_tree(tree))
+
 
 if __name__ == "__main__":
     main(sys.argv)
